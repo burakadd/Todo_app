@@ -10,24 +10,16 @@ from .models import Todo
 # Create your views here.
 
 
-class CreateTodoView(generics.CreateAPIView):
+class TodoView(generics.ListCreateAPIView):
     model = Todo
+    queryset = Todo.objects.all()
     permission_classes = (permissions.AllowAny,)
     # permission_classes = (permissions.IsAuthenticated,)
     serializer_class = TodoSerializer
 
 
-class TodoListView(generics.ListAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
-
-
-class TodoCompleteView(generics.UpdateAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
-
-
-class TodoDeleteView(generics.DestroyAPIView):
+class TodoActionView(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = (permissions.IsAuthenticated,)
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 
