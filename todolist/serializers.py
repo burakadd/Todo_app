@@ -9,13 +9,6 @@ class TodoSerializer(serializers.ModelSerializer):
         fields = ('id', 'header', 'completed',)
 
 
-class CreateTodoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Todo
-        fields = ('id', 'header', 'completed',)
-
-
-
 MyUserModel = get_user_model()
 
 

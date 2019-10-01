@@ -29,6 +29,8 @@ urlpatterns = [
     path('register/', views.CreateUserView.as_view()),
     path('token/', obtain_auth_token, name='api_token_auth'),
 
-    path('todo/', views.TodoView.as_view()),
-
+    path('createtodo/', views.CreateTodoView.as_view()),
+    path('todolist/', views.TodoListView.as_view()),
+    path('deletetodo/<int:pk>/', views.TodoDeleteView.as_view()),
+    path('completetodo/<int:pk>/', views.TodoCompleteView.as_view()),
 ]
