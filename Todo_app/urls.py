@@ -30,7 +30,5 @@ urlpatterns = [
     path('token/', obtain_auth_token, name='api_token_auth'),
 
     path('todo/', views.TodoView.as_view()),
-    # path('todolist/', views.TodoListView.as_view()),
     path('todo/<int:pk>/', views.TodoActionView.as_view()),
-    # path('completetodo/<int:pk>/', views.TodoCompleteView.as_view()),
 ]

@@ -6,7 +6,7 @@ from .models import Todo
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
-        fields = ('id', 'header', 'completed',)
+        fields = ('id', 'creator', 'header', 'completed',)
 
 
 MyUserModel = get_user_model()
