@@ -1,21 +1,18 @@
-from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Todo
+from .models import Todo, MyUserModel
 
 
 class TodoSerializer(serializers.ModelSerializer):
+    # creator = serializers.ReadOnlyField(source='creator.username')
     class Meta:
         model = Todo
-        fields = ('id', 'creator', 'header', 'completed',)
-
-
-MyUserModel = get_user_model()
+        fields = ('id', 'header', 'completed',)
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = MyUserModel
-        fields = ("id", "username", "password",)
+        fields = ('id', 'username', 'password',)
 
     password = serializers.CharField(write_only=True)
 
