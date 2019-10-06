@@ -21,19 +21,10 @@ class TodoView(generics.ListCreateAPIView):
     def post(self, request):
         serializer = TodoSerializer(data=request.data)
         if not serializer.is_valid():
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
-            )
-        todo = Todo(
-            creator=request.user,
-            header=serializer.data['header'],
-        )
-        todo.save()
-        return Response(
-            request.data,
-            status=status.HTTP_201_CREATED
-        )
+            return Response(serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
+        Todo(creator=request.user, header=serializer.data['header']).save()
+        return Response(request.data, status=status.HTTP_201_CREATED)
 
 
 class TodoActionView(generics.RetrieveUpdateDestroyAPIView):

@@ -3,7 +3,6 @@ from .models import Todo, MyUserModel
 
 
 class TodoSerializer(serializers.ModelSerializer):
-    # creator = serializers.ReadOnlyField(source='creator.username')
     class Meta:
         model = Todo
         fields = ('id', 'header', 'completed',)
