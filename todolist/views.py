@@ -30,8 +30,10 @@ class TodoView(generics.ListCreateAPIView):
 class TodoActionView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = (authentication.TokenAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
-    queryset = Todo.objects.all()
     serializer_class = TodoSerializer
+
+    def get_queryset(self):
+        return Todo.objects.filter(creator=self.request.user)
 
 
 class CreateUserView(generics.CreateAPIView):
